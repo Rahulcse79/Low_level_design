@@ -1,7 +1,7 @@
 import Models.ScorpioClassicIBodyShell;
 import Models.ScorpioClassicIEngine;
 
-public class ScorpioClassic extends Scorpio{
+public class ScorpioClassic extends RCscorpio{
     
     @Override
     public void makeScorpio(){
