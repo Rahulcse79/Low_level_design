@@ -1,0 +1,13 @@
+package Structural_design_patterns.Code;
+
+public interface ICar {
+
+    float baseWeight = 1500;
+
+    void start();
+
+    void stop();
+
+    float getWeight();
+
+}
