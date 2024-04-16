@@ -1,4 +1,4 @@
-package Java_revision;
+package Java_revision.Basic_java_revision;
 
 import java.util.Scanner;
 
