@@ -1,67 +1,95 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-class vehicle{
-
-protected:
+class vehicle
+{
+    public:
     string name;
-
-public:
     string model;
     int noOfTyres;
 
-    string getName()
+    vehicle(string _name, string _model, int _noOfTyres)
     {
-        return this->name;
+        cout<<"I am inside vehicle ctor "<<endl;
+        this->name = _name;
+        this->model = _model;
+        this->noOfTyres = _noOfTyres;
     }
 
-    vehicle(string name, string model, int noOfTyres)
-    {
-        cout<<"I am inside vehicle ctor"<<endl;
-        this->name = name;
-        this->model = model;
-        this->noOfTyres = noOfTyres;
-    }
-
+    public:
     void start_engine()
     {
-        cout<<"Engine is starting "<< name << " " << model << endl;
+        cout<<"Engine is starting "<< name<< " "<<model<<endl;
     }
 
     void stop_engine()
     {
-        cout<<"Engine is stoping "<< name << " "<< model <<endl;
+        cout<<"Engine is stoping "<<name<<" "<<model<<endl;
+    }
+
+    ~vehicle()
+    {
+        cout<<"I am inside vehicle dtor"<<endl;
     }
 };
 
-class Car: public vehicle
+class car : public vehicle
 {
-
-public:
+    public: 
     int noOfDoors;
     string transmissionType;
 
-    Car(string name, string model, int noOfTyres, int noOfDoors, string transmissionType):vehicle(name,model,noOfTyres)
+    car(string _name, string _model, int _noOfTyres, int _noOfDoors, string _transmissionType): vehicle(_name,_model,_noOfTyres)
     {
-        this->noOfDoors = noOfDoors;
-        this->transmissionType = transmissionType;
+        cout<<"I am inside car ctor"<<endl;
+        this->noOfDoors = _noOfDoors;
+        this->transmissionType = _transmissionType;
+       
     }
 
-    void startAc()
+    void StartAc()
     {
-        cout<< "Ac has started of "<< name <<endl;
-    }      
+        cout<<"Ac has started of "<<name<<endl;
+    }
+
+    ~car()
+    {
+        cout<<"I am inside car dtor"<<endl;
+    }
+};
+
+class MotorCycle : public vehicle
+{
+    protected:  
+    string handleBarStyle;
+    string suspensiontype;
+
+    public:
+    MotorCycle(string _name, string _model, int _noOfTyres, string _handleBarStyle, string _suspensiontype):vehicle(_name, _model, _noOfTyres)
+    {
+        cout<<"I am inside motorCycle ctor "<<endl;
+        this->handleBarStyle = _handleBarStyle;
+        this->suspensiontype = _suspensiontype;
+    }
+
+    void wheelie()
+    {
+        cout<<"Weelie started "<<name<<endl;
+    }
+
+    ~MotorCycle()
+    {
+        cout<<"I am inside motorcycle dtor"<<endl;
+    }
 };
 
 int main()
 {
-    Car A("Maruti 800", "LXI", 4, 4, "Manual");
-
-    cout<<"Name: "<<A.getName()<<endl;
-    cout<<"Model: "<<A.model<<endl;
-    cout<<"NoOfTyres: "<<A.noOfTyres<<endl;
-    cout<<"NoOfDoors: "<<A.noOfDoors<<endl;
-    cout<<"TransmissionType: "<<A.transmissionType<<endl; 
+    car A("Maruti 800", "LXI", 4, 4, "Manual");
+    A.StartAc();
+    
+    MotorCycle M("BMW", "VXI", 2, "U", "Hard");
 
     return 0;
 }
